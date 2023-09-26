@@ -1,5 +1,6 @@
 const Doctor = require("../models/doctors");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 module.exports.create =async (req,res)=>{
     try{
@@ -35,8 +36,8 @@ module.exports.create_session=async (req,res)=>{
         return res.status(200).json({
             message:"Sign in successful, here is your token, please keep it safe!",
             data:{
-                // token got expired in 360 seconds
-                token:jwt.sign(doctor.toJSON(), "CodeChef", {expiresIn:360}),
+                // token got expired in 360 seconds¸
+                token:jwt.sign(doctor.toJSON(), process.env.JWT_SECRET, {expiresIn:360}),
                 data:doctor
 
             }

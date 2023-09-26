@@ -6,6 +6,7 @@ router.get("/", (req,res)=>{
     return res.send("Hello Welcome")
 })
 
+// router middleware for all other routes from the default one
 router.use("/api/doctors",require("./doctors.js"));
 router.use("/api/patients",require("./patients"));
 router.use("/api/reports",require("./reports"));
